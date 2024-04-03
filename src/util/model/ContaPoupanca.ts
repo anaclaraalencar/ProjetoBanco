@@ -1,25 +1,31 @@
 import { Conta } from "./Conta";
 
+
 export class ContaPoupanca extends Conta {
+    private _aniversarioConta: number;  
 
-    private _aniversario: number;
+    constructor (numero: number, agencia: number, tipo: number, titular: string, saldo: number, aniversarioConta: number) {
+        super (numero, agencia, tipo, titular, saldo)
+        this._aniversarioConta = aniversarioConta
 
-    constructor(numero: number, agencia: number, tipo: number, titular: string, 
-        saldo: number, aniversario: number) {
-        super(numero, agencia, tipo, titular, saldo);
-        this._aniversario = aniversario;
-    }
-    public get aniversario() {
-        return this._aniversario;
     }
 
-    public set aniversario(aniversario: number) {
-        this._aniversario = aniversario;
+    public get aniversarioConta(): number {
+        return this._aniversarioConta;
+    }
+    
+
+    public set aniversarioConta(aniversarioConta : number) {
+        this._aniversarioConta = aniversarioConta
     }
 
     public visualizar(): void {
-        super.visualizar();
-        console.log("Dia do aniversário: " + this._aniversario);
+        super.visualizar()
+        console.log(`O dia do aniversário é ${this._aniversarioConta}`)
     }
-
 }
+
+/* let contaPoupanca: ContaPoupanca = new ContaPoupanca (12121995, 123, 1, 2, "Teste", 1000) 
+
+contaPoupanca.depositar(1450)
+contaPoupanca.visualizar() */

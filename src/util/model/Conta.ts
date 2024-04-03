@@ -1,6 +1,6 @@
-export abstract class Conta{
+export abstract class Conta {
 
-   
+
     private _numero: number;
     private _agencia: number;
     private _tipo: number;
@@ -8,135 +8,110 @@ export abstract class Conta{
     private _saldo: number;
 
     
-	constructor(_numero: number, _agencia: number, _tipo: number, _titular: string, _saldo: number) {
-		this._numero = _numero;
-		this._agencia = _agencia;
-		this._tipo = _tipo;
-		this._titular = _titular;
-		this._saldo = _saldo;
+	constructor(numero: number, agencia: number, tipo: number, titular: string, saldo: number) {
+		this._numero = numero;
+		this._agencia = agencia;
+		this._tipo = tipo;
+		this._titular = titular;
+		this._saldo = saldo;
 	}
 
-    
 
-    /**
-     * Getter numero
-     * @return {number}
-     */
-	public get numero(): number {
-		return this._numero;
-	}
 
-    /**
-     * Getter agencia
-     * @return {number}
-     */
-	public get agencia(): number {
-		return this._agencia;
-	}
+    public get numero() {
+        return this._numero;
+    }
 
-    /**
-     * Getter tipo
-     * @return {number}
-     */
-	public get tipo(): number {
-		return this._tipo;
-	}
+    public set numero (numero: number) {
+        this._numero = numero;
+    }
 
-    /**
-     * Getter titular
-     * @return {string}
-     */
-	public get titular(): string {
-		return this._titular;
-	}
 
-    /**
-     * Getter saldo
-     * @return {number}
-     */
-	public get saldo(): number {
-		return this._saldo;
-	}
 
-    /**
-     * Setter numero
-     * @param {number} value
-     */
-	public set numero(value: number) {
-		this._numero = value;
-	}
 
-    /**
-     * Setter agencia
-     * @param {number} value
-     */
-	public set agencia(value: number) {
-		this._agencia = value;
-	}
+public get agencia() {
+    return this._agencia;
+}
 
-    /**
-     * Setter tipo
-     * @param {number} value
-     */
-	public set tipo(value: number) {
-		this._tipo = value;
-	}
+public set agencia (agencia: number) {
+    this._agencia = agencia;
+}
 
-    /**
-     * Setter titular
-     * @param {string} value
-     */
-	public set titular(value: string) {
-		this._titular = value;
-	}
 
-    /**
-     * Setter saldo
-     * @param {number} value
-     */
-	public set saldo(value: number) {
-		this._saldo = value;
-	}
-   
+public get tipo() {
+    return this._tipo;
+}
 
-    
-    public sacar(valor: number): boolean{
-        
-        if(this._saldo >= valor){
-            this._saldo = this._saldo - valor; 
+public set tipo (tipo: number) {
+    this._tipo = tipo;
+}
+
+
+public get titular() {
+    return this._titular;
+}
+
+public set titular (titular: string) {
+    this._titular = titular;
+}
+
+public get saldo() {
+    return this._saldo;
+}
+
+public set saldo (saldo: number) {
+    this._saldo = saldo;
+}
+
+
+
+
+    public sacar(valor: number): boolean {
+        if (this._saldo >= valor) {
+            this._saldo -= valor;
             return true;
+        } else {
+            console.log("Saldo insuficiente");
+            return false;
         }
-
-        console.log("\nSaldo insuficiente!");
-        return false;
-
     }
 
+    public depositar(valor: number) {
+        if (this._saldo != 0) {
+            this._saldo += valor;
+        
+        } else {
+            this.saldo = valor;
+            
+        }
+    }
     
-    public depositar(valor: number): void{
-        this._saldo = this._saldo + valor; 
-    }
 
     public visualizar(): void{
 
-        let tipo: string = "";
+        let tipo: string = ""
 
-        switch(this._tipo){
+        switch (this._tipo) {
             case 1:
-                tipo = "Conta Corrente";
+                tipo = "Conta corrente";
                 break;
             case 2:
-                tipo = "Conta Poupança";
+                tipo = "Conta poupança";
+                break;
+            default:
+                tipo = "Tipo de conta não identificado";
                 break;
         }
 
-        console.log("\n*****************************************************");
-        console.log("Dados da Conta");
-        console.log("*****************************************************");
-        console.log(`Número da conta: ${this._numero}`);
-        console.log(`Número da agência: ${this._agencia}`);
-        console.log(`Tipo da conta: ${tipo}`);
-        console.log(`Titular da conta: ${this._titular}`);
-        console.log(`Saldo da conta: ${this._saldo}`);
+        
+        console.log("*****************************************************")
+        console.log("************    Dados da conta   ********************")
+        console.log("*****************************************************")
+        console.log(`Numero da conta: ${this.numero}`)
+        console.log(`Numero da agencia: ${this._agencia}`)
+        console.log(`Tipo da conta: ${tipo}`)
+        console.log(`Titular da conta: ${this._titular}`)
+        console.log(`Saldo da conta: ${this._saldo}`)
+
     }
 }
