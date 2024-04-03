@@ -25,7 +25,4 @@ export class ContaPoupanca extends Conta {
     }
 }
 
-/* let contaPoupanca: ContaPoupanca = new ContaPoupanca (12121995, 123, 1, 2, "Teste", 1000) 
 
-contaPoupanca.depositar(1450)
-contaPoupanca.visualizar() */
