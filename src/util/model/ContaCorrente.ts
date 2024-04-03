@@ -8,7 +8,7 @@ export class ContaCorrente extends Conta {
         this._limite = limite;
     }
 
-    
+
     public get limite(): number {
         return this._limite;
     }
@@ -36,23 +36,23 @@ export class ContaCorrente extends Conta {
     public depositar(valor: number) {
         this.saldo += valor;
 
-        // Verifica se o saldo atual é positivo antes de ajustar o limite
+        
         if (this.saldo > 0) {
-            // Verifica se o limite atual é menor que o limite máximo
+            
             if (this._limite < this.limite) {
-                // Calcula o valor máximo que o limite pode ser ajustado
+                
                 const valorMaximoLimite = this.limite - this._limite;
-                // Verifica se o valor do depósito não ultrapassa o valor máximo que o limite pode ser ajustado
+                
                 if (valor <= valorMaximoLimite) {
-                    // Ajusta o limite
+                    
                     this._limite += valor;
                 } else {
-                    // Se o valor do depósito ultrapassa o valor máximo que o limite pode ser ajustado, ajusta o limite para o valor máximo
+                    
                     this._limite += valorMaximoLimite;
                 }
             }
         } else {
-            // Se o saldo for negativo, ajusta o limite para zero
+            
             this._limite = 0;
         }
     }
